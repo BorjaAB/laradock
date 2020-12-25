@@ -1,23 +1,5 @@
 # Laravel con Docker
 
-## Crear la carpeta para alojar los proyectos
-
-Linux y macOS
-
-```
-mkdir laravel; cd laravel
-```
-
-Windows
-
-```
-mkdir laravel & cd laravel
-```
-
-> Si ya tenemos un repositorio clonado, abriremos un terminal en esa carpeta.
-
-> En Windows, usar CMD.EXE para lanzar los comandos, no PowerShell.
-
 ## Descargar Laradock
 
 1. Clonar el repositorio:
@@ -26,21 +8,7 @@ mkdir laravel & cd laravel
     git clone https://github.com/Laradock/laradock.git
     ```
 
-    o añadirlo como submódulo, si ya tenemos un proyecto Git:
-
-    ```
-    git submodule add https://github.com/Laradock/laradock.git
-    ```
-
-    > Para que funcione, tiene que estar instalado [el cliente de línea de comandos de Git](https://git-scm.com/downloads).
-
 2. Copiar el fichero `env-example` a `.env`:
-
-    Linux y macOS
-
-    ```
-    cd laradock && cp env-example .env
-    ```
 
     Windows
 
@@ -79,16 +47,6 @@ docker run -it --rm --name php-cli ^
     -v composer_cache:/home/docker/.composer/cache ^
     -v "%CD%:/usr/src/app" thecodingmachine/php:7.4-v3-slim-cli ^
     composer create-project --prefer-dist laravel/laravel app
-```
-
-### (Opcional) Poner el proyecto bajo control de versiones
-
-> :warning: No lanzar este comando si se ha instalado Laradock como submódulo.
-
-El siguiente comando crea un repositorio nuevo de Git en la carpeta del proyecto.
-
-```
-cd app; git init; git add .; git commit -m "Initial commit"; cd ..
 ```
 
 ### Configurar un nuevo sitio en Laradock
@@ -195,27 +153,9 @@ docker-compose exec workspace /bin/bash
 cd app
 ```
 
-Y después el comando que necesitemos. Por ejemplo:
-
 ```
-php artisan tinker
+Aqui poner los comandos del block de notas
 ```
-
-o
-
-```
-php artisan make:model Tarea -mcr
-```
-
-### Consola de MariaDB
-
-```
-docker-compose exec mariadb mysql -u root -proot
-```
-
-### Sitio predeterminado
-
-El sitio por defecto de nginx en [localhost](http://localhost) muestra el directorio `laravel/public`. Se puede dejar ahí un fichero `index.html` para que no de un error 404.
 
 ### Añadir soporte para fechas en castellano
 
