@@ -220,6 +220,14 @@ docker run -it --rm --name php-cli ^
     cd app
     composer install
     php artisan key:generate
+    
+    - Opcional.
+    - Ejecutar si quieres que se cree la tabla migrate.
+    php artisan migrate:install
+    - Ejecutar si quieres que se creen todas las tablas.
+    php artisan migrate
+    - Ejecutar si quieres que se rellenen los datos en las tablas.
+    php artisan db:seed
 ```
 > Tambien tienes que tener modificado el fichero de hosts.
 
