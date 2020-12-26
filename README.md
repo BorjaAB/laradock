@@ -159,7 +159,7 @@ php artisan migrate:install
 > Crea las tablas que estan en la ruta database/migrations
 php artisan migrate
 
-> Rellena los datos del fichero DatabaseSeeders.php de la carpeta database/seeders. (Sabrá dios como lo hace laravel)
+> Rellena los datos del fichero DatabaseSeeders.php. (Sabrá dios como lo hace laravel)
 php artisan db:seed
 
 > Crear migraciones, es decir tablas.
