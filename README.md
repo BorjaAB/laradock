@@ -1,5 +1,5 @@
 # Laravel con Docker
-
+> Requisitos Windows: Tener instalado Docker y Git.
 ## Descargar Laradock
 
 1. Clonar el repositorio:
