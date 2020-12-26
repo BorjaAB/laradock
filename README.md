@@ -215,6 +215,7 @@ docker run -it --rm --name php-cli ^
 ### Ejecutar este comando en la carpeta donde tienes instalado laradock
  
 ```
+    docker-compose up -d nginx mariadb phpmyadmin workspace
     docker-compose exec workspace /bin/bash
     cd app
     composer install
