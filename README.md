@@ -152,10 +152,34 @@ Página principal: http://app.test
 docker-compose exec workspace /bin/bash
 
 cd app
-```
 
-```
-Aqui poner los comandos del block de notas
+> Crea la tabla migraciones. (Sabrá dios para que la usa laravel)
+php artisan migrate:install
+
+> Crea las tablas que estan en la ruta database/migrations
+php artisan migrate
+
+> Rellena los datos del fichero DatabaseSeeders.php de la carpeta database/seeders. (Sabrá dios como lo hace laravel)
+php artisan db:seed
+
+> Crear migraciones, es decir tablas.
+> Ejemplo de creación de la migración especialidades
+php artisan make:migration create_especialidades_table --create=especialidades
+
+> Ejemplo de la creación del modelo User. Que siempre sea en singular.
+php artisan make:model User
+
+> Crear fichero semilla, es decir el fichero que contiene los datos.
+php artisan make:seeder UsersTableSeeder
+
+> Crear controladores, es decir contiene la lógica, dado que laravel usa lo del modelo, vista, controlador.
+php artisan make:controller TaskController
+
+> Crear Middleware
+php artisan make:middleware MyMiddleware
+
+>Lista la lista de rutas
+php artisan route:list
 ```
 
 ### Añadir soporte para fechas en castellano
@@ -174,18 +198,18 @@ Lo que tenemos que hacer es lo siguiente:
 
 ### Configurar un nuevo sitio en Laradock
 
-Ir a `laradock/nginx/sites` y duplicar `laravel.conf.example` a `app.conf`.
+1. Ir a `laradock/nginx/sites` y duplicar `laravel.conf.example` a `app.conf`.
 
 Modificar en el fichero `app.conf` estas dos líneas, cambiado `laravel` por el nombre del proyecto:
 
-    ```
+```
     server_name app.test;
     root /var/www/app/public;
-    ```
+```
 
 ### Crear la base de datos
 
-Acceder a [phpMyAdmin](http://localhost:8081)
+2. Acceder a [phpMyAdmin](http://localhost:8081)
 
     - Servidor `mariadb` y usuario `root/root`.
     - Crear la base de datos `app` y el usuario `app/app`.
@@ -211,7 +235,6 @@ docker run -it --rm --name php-cli ^
 ```
 
 ### Ir al directorio del proyecto y clonar el proyecto allí.
-
 ```
     cd app
 
@@ -225,11 +248,11 @@ docker run -it --rm --name php-cli ^
     DB_DATABASE=app
     DB_USERNAME=app
     DB_PASSWORD=app
- ´´´
+```
  
- ### Ejecutar este comando en la carpeta donde tienes instalado laradock
+### Ejecutar este comando en la carpeta donde tienes instalado laradock
  
- ´´´
+```
     docker-compose exec workspace /bin/bash
     cd app
     composer install
