@@ -167,3 +167,74 @@ En la variable `PHP_FPM_ADDITIONAL_LOCALES` escribir la lista de idiomas adicion
 ```
 Información sacade de: https://gist.github.com/ijaureguialzo/bf10504c742b44122ba62bfafe772c1c
 ```
+
+## Todos esos son los comandos para crear un proyecto desde 0, pero y si quiero seguir con un proyecto ya empezado, de otra persona.
+
+Lo que tenemos que hacer es lo siguiente:
+
+### Configurar un nuevo sitio en Laradock
+
+Ir a `laradock/nginx/sites` y duplicar `laravel.conf.example` a `app.conf`.
+
+Modificar en el fichero `app.conf` estas dos líneas, cambiado `laravel` por el nombre del proyecto:
+
+    ```
+    server_name app.test;
+    root /var/www/app/public;
+    ```
+
+### Crear la base de datos
+
+Acceder a [phpMyAdmin](http://localhost:8081)
+
+    - Servidor `mariadb` y usuario `root/root`.
+    - Crear la base de datos `app` y el usuario `app/app`.
+
+### Generar el proyecto con el comando:
+
+Linux y macOS
+
+```
+docker run -it --rm --name php-cli \
+    -v composer_cache:/home/docker/.composer/cache \
+    -v "$PWD:/usr/src/app" thecodingmachine/php:7.4-v3-slim-cli \
+    composer create-project --prefer-dist laravel/laravel app
+```
+
+Windows
+
+```
+docker run -it --rm --name php-cli ^
+    -v composer_cache:/home/docker/.composer/cache ^
+    -v "%CD%:/usr/src/app" thecodingmachine/php:7.4-v3-slim-cli ^
+    composer create-project --prefer-dist laravel/laravel app
+```
+
+### Ir al directorio del proyecto y clonar el proyecto allí.
+
+```
+    cd app
+
+    Clonar la ruta en el directorio del proyecto
+    
+    Editar el .env de la aplicación
+
+    DB_CONNECTION=mysql
+    DB_HOST=mariadb
+    DB_PORT=3306
+    DB_DATABASE=app
+    DB_USERNAME=app
+    DB_PASSWORD=app
+ ´´´
+ 
+ ### Ejecutar este comando en la carpeta donde tienes instalado laradock
+ 
+ ´´´
+    docker-compose exec workspace /bin/bash
+    cd app
+    composer install
+    php artisan key:generate
+```
+> Tambien tienes que tener modificado el fichero de hosts.
+
+Ya debería de estar funcionando.
