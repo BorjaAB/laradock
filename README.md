@@ -144,54 +144,6 @@ Página principal: http://app.test
 > Si en Windows da un error de permiso denegado, entrar al workspace (ver siguiente sección) y lanzar el comando: `chown -R laradock:laradock /var/www`.
 > Para hacer el comando anterior, hay que meterse dentro del workspace, eso se hace con el primer comando en la sección de utilidades, tambien tendréis que meteros en la carpeta del proyecto, en el ejemplo se usa app.
 
-## Utilidades
-
-### Lanzar comandos en el proyecto (composer, artisan, npm...)
-
-```
-docker-compose exec workspace /bin/bash
-
-cd app
-
-> Crea la tabla migraciones. (Sabrá dios para que la usa laravel)
-php artisan migrate:install
-
-> Crea las tablas que estan en la ruta database/migrations
-php artisan migrate
-
-> Rellena los datos del fichero DatabaseSeeders.php. (Sabrá dios como lo hace laravel)
-php artisan db:seed
-
-> Crear migraciones, es decir tablas.
-> Ejemplo de creación de la migración especialidades
-php artisan make:migration create_especialidades_table --create=especialidades
-
-> Ejemplo de la creación del modelo User. Que siempre sea en singular.
-php artisan make:model User
-
-> Crear fichero semilla, es decir el fichero que contiene los datos.
-php artisan make:seeder UsersTableSeeder
-
-> Crear controladores, es decir contiene la lógica, dado que laravel usa lo del modelo, vista, controlador.
-php artisan make:controller TaskController
-
-> Crear Middleware
-php artisan make:middleware MyMiddleware
-
->Lista la lista de rutas
-php artisan route:list
-```
-
-### Añadir soporte para fechas en castellano
-
-Editar el fichero `.env` de laradock y activar la opción `PHP_FPM_INSTALL_ADDITIONAL_LOCALES=true`.
-
-En la variable `PHP_FPM_ADDITIONAL_LOCALES` escribir la lista de idiomas adicionales, como por ejemplo `es_ES.UTF-8` para castellano.
-
-```
-Información sacade de: https://gist.github.com/ijaureguialzo/bf10504c742b44122ba62bfafe772c1c
-```
-
 ## Todos esos son los comandos para crear un proyecto desde 0, pero y si quiero seguir con un proyecto ya empezado, de otra persona.
 
 Lo que tenemos que hacer es lo siguiente:
@@ -271,3 +223,59 @@ docker run -it --rm --name php-cli ^
 > Tambien tienes que tener modificado el fichero de hosts.
 
 Ya debería de estar funcionando.
+
+
+
+## Utilidades y comandos.
+
+### Lanzar comandos en el proyecto (composer, artisan, npm...)
+
+```
+docker-compose exec workspace /bin/bash
+
+cd app
+
+- Lista la lista de rutas
+php artisan route:list
+
+- Crear migraciones, es decir tablas.
+- Ejemplo de creación de la migración especialidades
+php artisan make:migration create_especialidades_table --create=especialidades
+
+- Crea la tabla migraciones.
+php artisan migrate:install
+
+- Crea las tablas que estan en la ruta database/migrations.
+php artisan migrate
+
+- Resetea la ultima migración. (Borrar las tablas creadas en la ultima migración)
+php artisan migrate:rollback
+
+- Resetea todas las migraciones. (Borra todas las tablas de la base de datos)
+php artisan migrate:reset
+
+- Rellena los datos del fichero DatabaseSeeders.php. (Sabrá dios como lo hace laravel)
+php artisan db:seed
+
+- Ejemplo de la creación del modelo User. Que siempre sea en singular.
+php artisan make:model User
+
+- Crear fichero semilla, es decir el fichero que contiene los datos.
+php artisan make:seeder UsersTableSeeder
+
+- Crear controladores, es decir contiene la lógica, dado que laravel usa lo del modelo, vista, controlador.
+php artisan make:controller TaskController
+
+- Crear Middleware
+php artisan make:middleware MyMiddleware
+```
+
+### Añadir soporte para fechas en castellano
+
+Editar el fichero `.env` de laradock y activar la opción `PHP_FPM_INSTALL_ADDITIONAL_LOCALES=true`.
+
+En la variable `PHP_FPM_ADDITIONAL_LOCALES` escribir la lista de idiomas adicionales, como por ejemplo `es_ES.UTF-8` para castellano.
+
+```
+Información sacade de: https://gist.github.com/ijaureguialzo/bf10504c742b44122ba62bfafe772c1c
+```
