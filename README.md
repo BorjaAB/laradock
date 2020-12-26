@@ -207,6 +207,16 @@ Modificar en el fichero `app.conf` estas dos líneas, cambiado `laravel` por el 
     root /var/www/app/public;
 ```
 
+### (Re)arrancar los contenedores
+
+Los comandos de `docker-compose` se lanzan en la carpeta `laradock`.
+
+Arrancar los contenedores necesarios:
+
+```
+docker-compose up -d nginx mariadb phpmyadmin workspace
+```
+
 ### Crear la base de datos
 
 2. Acceder a [phpMyAdmin](http://localhost:8081)
