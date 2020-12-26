@@ -232,15 +232,19 @@ Ya debería de estar funcionando.
 ### Lanzar comandos en el proyecto (composer, artisan, npm...)
 
 ```
+- Enciende todas las máquinas.
+docker-compose up -d nginx mariadb phpmyadmin workspace
+
+- Te metes en la máquina workspace.
 docker-compose exec workspace /bin/bash
 
 cd app
 
-- Lista la lista de rutas
+- Lista la lista de rutas.
 php artisan route:list
 
 - Crear migraciones, es decir tablas.
-- Ejemplo de creación de la migración especialidades
+- Ejemplo de creación de la migración especialidades.
 php artisan make:migration create_especialidades_table --create=especialidades
 
 - Crea la tabla migraciones.
@@ -249,13 +253,13 @@ php artisan migrate:install
 - Crea las tablas que estan en la ruta database/migrations.
 php artisan migrate
 
-- Resetea la ultima migración. (Borrar las tablas creadas en la ultima migración)
+- Resetea la ultima migración. (Borrar las tablas creadas en la ultima migración).
 php artisan migrate:rollback
 
-- Resetea todas las migraciones. (Borra todas las tablas de la base de datos)
+- Resetea todas las migraciones. (Borra todas las tablas de la base de datos).
 php artisan migrate:reset
 
-- Rellena los datos del fichero DatabaseSeeders.php. (Sabrá dios como lo hace laravel)
+- Rellena los datos del fichero DatabaseSeeders.php. (Sabrá dios como lo hace laravel).
 php artisan db:seed
 
 - Ejemplo de la creación del modelo User. Que siempre sea en singular.
@@ -267,7 +271,7 @@ php artisan make:seeder UsersTableSeeder
 - Crear controladores, es decir contiene la lógica, dado que laravel usa lo del modelo, vista, controlador.
 php artisan make:controller TaskController
 
-- Crear Middleware
+- Crear Middleware.
 php artisan make:middleware MyMiddleware
 ```
 
