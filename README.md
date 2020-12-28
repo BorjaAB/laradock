@@ -290,6 +290,6 @@ Editar el fichero `.env` de laradock y activar la opción `PHP_FPM_INSTALL_ADDIT
 En la variable `PHP_FPM_ADDITIONAL_LOCALES` escribir la lista de idiomas adicionales, como por ejemplo `es_ES.UTF-8` para castellano.
 
 ```
-Información sacade de
+Información sacade de ijaureguialzo
 ```
-<a> src="https://gist.github.com/ijaureguialzo/bf10504c742b44122ba62bfafe772c1c" </a>
+https://gist.github.com/ijaureguialzo/bf10504c742b44122ba62bfafe772c1c
