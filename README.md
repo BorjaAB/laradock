@@ -35,7 +35,6 @@ Linux y macOS
 
 ```
 docker run -it --rm --name php-cli \
-    -v composer_cache:/home/docker/.composer/cache \
     -v "$PWD:/usr/src/app" thecodingmachine/php:7.4-v3-slim-cli \
     composer create-project --prefer-dist laravel/laravel app
 ```
@@ -44,7 +43,6 @@ Windows
 
 ```
 docker run -it --rm --name php-cli ^
-    -v composer_cache:/home/docker/.composer/cache ^
     -v "%CD%:/usr/src/app" thecodingmachine/php:7.4-v3-slim-cli ^
     composer create-project --prefer-dist laravel/laravel app
 ```
