@@ -271,6 +271,9 @@ php artisan db:seed
 - Ejemplo de la creación del modelo User. Que siempre sea en singular.
 php artisan make:model User
 
+- Ejemplo de la creación del modelo User y la migración a la vez. Que siempre sea en singular.
+php artisan make:model User --migration
+
 - Crear fichero semilla, es decir el fichero que contiene los datos.
 php artisan make:seeder UsersTableSeeder
 
