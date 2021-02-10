@@ -294,3 +294,10 @@ En la variable `PHP_FPM_ADDITIONAL_LOCALES` escribir la lista de idiomas adicion
 Información sacada de ijaureguialzo
 ```
 https://gist.github.com/ijaureguialzo/bf10504c742b44122ba62bfafe772c1c
+
+
+## Segunda Evaluación
+## Utilidades y comandos.
+```
+php artisan make:factory PostFactory --model=Post
+```
