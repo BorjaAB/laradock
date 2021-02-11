@@ -301,4 +301,7 @@ https://gist.github.com/ijaureguialzo/bf10504c742b44122ba62bfafe772c1c
 ```
 - Crea un factory de notas.
 php artisan make:factory NotaFactory --model=Nota
+
+- Refresca las tablas y hace el seeder.
+php artisan migrate:fresh --seed
 ```
